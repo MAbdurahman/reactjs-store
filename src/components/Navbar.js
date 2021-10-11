@@ -9,7 +9,42 @@ import { useProductsContext } from '../context/products_context'
 import { useUserContext } from '../context/user_context'
 
 const Nav = () => {
-  return <h4>navbar</h4>
+	//**************** variables ****************//
+  // const { openSidebar } = useProductsContext();
+	return (
+		<NavContainer>
+			<div className='nav-center'>
+				<div className='nav-header'>
+					<Link to='/'>
+						<img src={logo} alt='brand logo' />
+					</Link>
+					<button
+						type='button'
+						className='nav-toggle'
+						// onClick={openSidebar}
+					>
+						<FaBars />
+					</button>
+				</div>
+				<ul className='nav-links'>
+					{links.map(link => {
+						const { id, text, url } = link;
+						return (
+							<li key={id}>
+								<Link to={url}>{text}</Link>
+							</li>
+						);
+					})}
+{/* 					{myUser && (
+						<li>
+							<Link to='/checkout'>checkout</Link>
+						</li>
+					)} */}
+				</ul>
+        <CartButtons />
+			</div>
+		</NavContainer>
+	);
 }
 
 const NavContainer = styled.nav`
@@ -27,6 +62,7 @@ const NavContainer = styled.nav`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    cursor: pointer;
     img {
       width: 175px;
       margin-left: -15px;
