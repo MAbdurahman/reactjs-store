@@ -14,8 +14,8 @@ const AddToCart = ({ product }) => {
 
 	//**************** functions ****************//
 	const increase = () => {
-		setAmount(oldAmount => {
-			let tempAmount = oldAmount + 1;
+		setAmount(currentAmount => {
+			let tempAmount = currentAmount + 1;
 			if (tempAmount > stock) {
 				tempAmount = stock;
 			}
@@ -24,8 +24,8 @@ const AddToCart = ({ product }) => {
 	};
 
 	const decrease = () => {
-		setAmount(oldAmount => {
-			let tempAmount = oldAmount - 1;
+		setAmount(currentAmount => {
+			let tempAmount = currentAmount - 1;
 			if (tempAmount < 1) {
 				tempAmount = 1;
 			}
