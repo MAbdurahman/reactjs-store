@@ -33,7 +33,7 @@ export const FilterProvider = ({ children }) => {
 
 	useEffect(() => {
 		dispatch({ type: SORT_PRODUCTS });
-	}, [products, state.sort, state.filters]);
+	}, [products, state.sort]);
 
 	const setGridView = () => {
 		dispatch({ type: SET_GRIDVIEW });
