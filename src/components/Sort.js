@@ -9,7 +9,8 @@ const Sort = () => {
 		grid_view,
 		setGridView,
 		setListView,
-
+    sort, 
+    updateSort
 	} = useFilterContext();
 	return (
 		<Wrapper>
@@ -37,8 +38,8 @@ const Sort = () => {
 					name='sort'
 					id='sort'
 					className='sort-input'
-					value={''}
-					onChange={''}
+					value={sort}
+					onChange={updateSort}
 				>
 					<option value='price-lowest'>price (lowest)</option>
 					<option value='price-highest'>price (highest)</option>
