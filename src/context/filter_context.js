@@ -12,16 +12,28 @@ import {
 } from '../actions'
 import { useProductsContext } from './products_context'
 
-const initialState = {}
+const initialState = {
+  filter_products: [],
+  all_products: []
+}
 
 const FilterContext = React.createContext()
 
 export const FilterProvider = ({ children }) => {
-  return (
-    <FilterContext.Provider value='filter context'>
-      {children}
-    </FilterContext.Provider>
-  )
+	//**************** variables ****************//
+	const { products } = useProductsContext();
+	const [state, dispatch] = useReducer(reducer, initialState);
+
+	//**************** functions ****************//
+  useEffect(() => {
+    dispatch({type: LOAD_PRODUCTS, payload: products})
+  }, [products]);
+
+	return (
+		<FilterContext.Provider value='filter context'>
+			{children}
+		</FilterContext.Provider>
+	);
 }
 // make sure use
 export const useFilterContext = () => {
