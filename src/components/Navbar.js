@@ -48,10 +48,15 @@ const Nav = () => {
 }
 
 const NavContainer = styled.nav`
+  position: fixed;
+  width: 100%;
   height: 5rem;
+  z-index: 1000;
+  margin-bottom: 3em;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #fff;
 
   .nav-center {
     width: 90vw;
