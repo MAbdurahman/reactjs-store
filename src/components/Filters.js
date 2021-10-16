@@ -41,7 +41,7 @@ const Filters = () => {
 							onChange={updateFilters}
 						/>
 					</div>
-					{/*category*/}
+					{/*categories*/}
 					<div className='form-control'>
 						<h5>category</h5>
 						<div>
@@ -62,7 +62,7 @@ const Filters = () => {
 							})}
 						</div>
 					</div>
-					{/* company */}
+					{/* companies */}
 					<div className='form-control'>
 						<h5>company</h5>
 						<select
@@ -80,6 +80,8 @@ const Filters = () => {
 							})}
 						</select>
 					</div>
+					{/* colors */}
+					
 				</form>
 			</div>
 		</Wrapper>
