@@ -144,6 +144,10 @@ const Filters = () => {
 						/>
 					</div>
 				</form>
+				<button type='button' className='clear-btn' onClick={clearFilters}>
+					{' '}
+					clear filters
+				</button>
 			</div>
 		</Wrapper>
 	);
