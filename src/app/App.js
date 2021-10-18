@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Navbar, Sidebar, Footer } from './../components';
 import {
@@ -14,7 +14,7 @@ import {
 } from './../pages';
 
 export default function App() {
-  return (
+	return (
 		<Router>
 			<Navbar />
 			<Sidebar />
@@ -41,5 +41,5 @@ export default function App() {
 			</Switch>
 			<Footer />
 		</Router>
-  );
+	);
 }
