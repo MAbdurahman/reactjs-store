@@ -8,10 +8,7 @@ import { CartProvider } from './context/cart_context';
 import { UserProvider } from './context/user_context';
 import { Auth0Provider } from '@auth0/auth0-react';
 
-
-
 const root = document.getElementById('root');
-
 
 function render() {
 
@@ -19,7 +16,9 @@ function render() {
 		<React.StrictMode>
 			<ProductsProvider>
 				<FilterProvider>
-					<App />
+					<CartProvider>
+						<App />
+					</CartProvider>
 				</FilterProvider>
 			</ProductsProvider>
 		</React.StrictMode>,
