@@ -186,6 +186,9 @@ p {
   margin: 0 auto;
   max-width: var(--max-width);
 }
+.align-text-right {
+  text-align: right;
+}
 
 @media screen and (min-width: 992px) {
   .section-center {
