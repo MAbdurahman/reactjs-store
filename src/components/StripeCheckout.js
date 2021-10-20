@@ -12,6 +12,7 @@ import { useCartContext } from '../context/cart_context';
 import { useUserContext } from '../context/user_context';
 import { formatPrice } from '../utils/helpers';
 import { useHistory } from 'react-router-dom';
+import { GiConsoleController } from 'react-icons/gi';
 
 const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
@@ -27,6 +28,24 @@ const CheckoutForm = () => {
 	const [clientSecret, setClientSecret] = useState('');
 	const stripe = useStripe();
 	const elements = useElements();
+	//**************** functions ****************//
+	const createPaymentIntent = async () => {
+		try {
+			const { data } = await axios.post(
+				'/.netlify/functions/create-payment-intent',
+
+				JSON.stringify({ cart, shipping_fee, total_amount })
+			);
+			// setClientSecret(data.clientSecret);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	useEffect(() => {
+		createPaymentIntent();
+		// eslint-disable-next-line
+	}, []);
 	//**************** card styles ****************//
 	const cardStyle = {
 		style: {
@@ -45,7 +64,52 @@ const CheckoutForm = () => {
 			},
 		},
 	};
-	return <h4>hello from Stripe Checkout </h4>;
+	//**************** more functions ****************//
+	const handleChange = async e => {
+		console.log('handle change');
+	};
+	const handleSubmit = async e => {
+		console.log('handle submit');
+	};
+	return (
+		<div>
+			<form id='payment-form' onSubmit={handleSubmit}>
+				<CardElement
+					id='card-element'
+					options={cardStyle}
+					onChange={handleChange}
+				/>
+				<button disabled={processing || disabled || succeeded} id='submit'>
+					<span id='button-text'>
+						{processing ? (
+							<div className='spinner' id='spinner'></div>
+						) : (
+							'Pay'
+						)}
+					</span>
+				</button>
+				{/* Show any error that happens when processing the payment */}
+				{error && (
+					<div className='card-error' role='alert'>
+						{error}
+					</div>
+				)}
+				{/* Show a success message upon completion */}
+				<p
+					className={
+						succeeded ? 'result-message' : 'result-message hidden'
+					}
+				>
+					Payment succeeded, see the result in your
+					<a href={`https://dashboard.stripe.com/test/payments`}>
+						{' '}
+						Stripe dashboard.
+					</a>{' '}
+					Refresh the page to pay again.
+				</p>
+			</form>
+		</div>
+	);
 };
 
 const StripeCheckout = () => {
