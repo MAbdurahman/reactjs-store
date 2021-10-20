@@ -134,8 +134,8 @@ const CheckoutForm = () => {
 						succeeded ? 'result-message' : 'result-message hidden'
 					}
 				>
-					Payment succeeded, see the result in your
-					<a href={`https://dashboard.stripe.com/test/payments`}>
+					Payment succeeded, click to go to home page
+					<a href='/'>
 						{' '}
 						Stripe dashboard.
 					</a>{' '}
