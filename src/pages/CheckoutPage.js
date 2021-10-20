@@ -1,13 +1,13 @@
-import React from 'react'
-import styled from 'styled-components'
-import { PageHero, StripeCheckout } from '../components'
+import React from 'react';
+import styled from 'styled-components';
+import { PageHero, StripeCheckout } from '../components';
 // extra imports
-import { useCartContext } from '../context/cart_context'
-import { Link } from 'react-router-dom'
+import { useCartContext } from '../context/cart_context';
+import { Link } from 'react-router-dom';
 
 const CheckoutPage = () => {
-  const cart = 1;
-  return (
+	const cart = 1;
+	return (
 		<main>
 			<PageHero title='checkout' />
 			<Wrapper className='page'>
@@ -23,8 +23,8 @@ const CheckoutPage = () => {
 				)}
 			</Wrapper>
 		</main>
-  );
-}
+	);
+};
 const Wrapper = styled.div`
 	display: flex;
 	align-items: center;
@@ -33,4 +33,4 @@ const Wrapper = styled.div`
 		text-align: center;
 	}
 `;
-export default CheckoutPage
+export default CheckoutPage;
