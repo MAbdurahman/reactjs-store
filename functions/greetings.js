@@ -1,5 +1,5 @@
 /*===================================================
-            ./functions/greetings.js
+				/.netlify/functions/greetings.js
 ======================================================*/
 exports.handler = async function (event, context) {
 	return {
