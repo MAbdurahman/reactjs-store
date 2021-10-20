@@ -8,8 +8,6 @@ import { CartProvider } from './context/cart_context';
 import { UserProvider } from './context/user_context';
 import { Auth0Provider } from '@auth0/auth0-react';
 
-const root = document.getElementById('root');
-
 function render() {
 	ReactDOM.render(
 		<React.StrictMode>
@@ -19,13 +17,15 @@ function render() {
 				redirectUri={window.location.origin}
 				cacheLocation='localstorage'
 			>
-				<ProductsProvider>
-					<FilterProvider>
-						<CartProvider>
-							<App />
-						</CartProvider>
-					</FilterProvider>
-				</ProductsProvider>
+				<UserProvider>
+					<ProductsProvider>
+						<FilterProvider>
+							<CartProvider>
+								<App />
+							</CartProvider>
+						</FilterProvider>
+					</ProductsProvider>
+				</UserProvider>
 			</Auth0Provider>
 		</React.StrictMode>,
 		document.getElementById('root')
