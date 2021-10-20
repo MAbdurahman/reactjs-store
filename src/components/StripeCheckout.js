@@ -36,7 +36,7 @@ const CheckoutForm = () => {
 
 				JSON.stringify({ cart, shipping_fee, total_amount })
 			);
-      
+
 			setClientSecret(data.clientSecret);
 		} catch (error) {}
 	};
@@ -65,13 +65,48 @@ const CheckoutForm = () => {
 	};
 	//**************** more functions ****************//
 	const handleChange = async e => {
-		console.log('handle change');
+		// Listen for changes in the CardElement
+		// and display any errors as the customer types their card details
+		setDisabled(e.empty);
+		setError(e.error ? e.error.message : '');
 	};
+
 	const handleSubmit = async e => {
-		console.log('handle submit');
+		e.preventDefault();
+		setProcessing(true);
+		const payload = await stripe.confirmCardPayment(clientSecret, {
+			payment_method: {
+				card: elements.getElement(CardElement),
+			},
+		});
+		if (payload.error) {
+			setError(`Payment failed ${payload.error.message}`);
+			setProcessing(false);
+		} else {
+			setError(null);
+			setProcessing(false);
+			setSucceeded(true);
+			setTimeout(() => {
+				clearCart();
+				history.push('/');
+			}, 5000);
+		}
 	};
 	return (
 		<div>
+			{succeeded ? (
+				<article>
+					<h4>Thank you</h4>
+					<h4>Your payment was successful!</h4>
+					<h4>Redirecting to home page...</h4>
+				</article>
+			) : (
+				<article>
+					<h4>Hello, {myUser && myUser.name}</h4>
+					<p>Your total is {formatPrice(total_amount)}</p>
+					<p>Test Card Number: 4242 4242 4242 4242</p>
+				</article>
+			)}
 			<form id='payment-form' onSubmit={handleSubmit}>
 				<CardElement
 					id='card-element'
