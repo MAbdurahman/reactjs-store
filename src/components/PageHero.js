@@ -15,6 +15,7 @@ const PageHero = ({ title, product }) => {
 };
 
 const Wrapper = styled.section`
+margin-top: 3em;
   background: var(--clr-primary-10);
   width: 100%;
   min-height: 20vh;
@@ -28,6 +29,11 @@ const Wrapper = styled.section`
   }
   a:hover {
     color: var(--clr-primary-1);
+  }
+  @media screen and (max-width: 420px) {
+    .section-center {
+      margin-top: 3.7em;
+    }
   }
 `
 

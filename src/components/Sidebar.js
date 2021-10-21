@@ -110,7 +110,7 @@ const SidebarContainer = styled.div`
   }
   .show-sidebar {
     transform: translate(0);
-    z-index: 999;
+    z-index: 10000;
   }
   .cart-btn-wrapper {
     margin: 2rem auto;
