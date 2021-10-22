@@ -12,7 +12,6 @@ import { useCartContext } from '../context/cart_context';
 import { useUserContext } from '../context/user_context';
 import { formatPrice } from '../utils/helpers';
 import { useHistory } from 'react-router-dom';
-import { GiConsoleController } from 'react-icons/gi';
 
 const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
@@ -292,6 +291,11 @@ const Wrapper = styled.section`
 	@media only screen and (max-width: 600px) {
 		form {
 			width: 80vw;
+		}
+	}
+	@media only screen and (max-width: 425px) {
+		form {
+			width: 95vw;
 		}
 	}
 `;
